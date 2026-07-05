@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <h1>📊 Dashboard</h1>
+
+    <p>Welcome back! Here's your EduGenie activity.</p>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h2 id="questions">0</h2>
+            <p>Questions Asked</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 id="quizzes">0</h2>
+            <p>Quizzes Generated</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 id="summaries">0</h2>
+            <p>Summaries Created</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 id="roadmaps">0</h2>
+            <p>Roadmaps Generated</p>
+        </div>
+
+    </div>
+
+    <div class="recent-card">
+
+        <h2>📈 Recent Activity</h2>
+
+        <ul id="activity">
+
+            <li>Start using EduGenie AI to track your learning.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<script>
+
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
+document.getElementById("questions").innerHTML = history.length;
+
+// Temporary values (we'll make these dynamic later)
+let quizCount = Number(localStorage.getItem("quizCount")) || 0;
+
+document.getElementById("quizzes").innerHTML = quizCount;
+let summaryCount=Number(localStorage.getItem("summaryCount")) || 0;
+
+document.getElementById("summaries").innerHTML=summaryCount;
+let roadmapCount=Number(localStorage.getItem("roadmapCount")) || 0;
+
+document.getElementById("roadmaps").innerHTML=roadmapCount;
+
+let activity = document.getElementById("activity");
+
+activity.innerHTML = "";
+
+if(history.length==0){
+
+    activity.innerHTML = "<li>No activity yet.</li>";
+
+}else{
+
+    history.slice().reverse().forEach(chat=>{
+
+        activity.innerHTML += `
+        <li>
+            <b>${chat.question}</b><br>
+            <small>${chat.time}</small>
+        </li>
+        `;
+
+    });
+
+}
+
+</script>
+
+{% endblock %}

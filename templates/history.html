@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>🕒 Chat History</h1>
+    <p>Your previous conversations with EduGenie AI.</p>
+</div>
+
+<div class="history-container">
+
+    <button class="clear-btn" onclick="clearHistory()">
+        🗑 Clear History
+    </button>
+
+    <div id="historyList"></div>
+
+</div>
+
+
+<script>
+
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
+console.log("History:", history);
+
+let container = document.getElementById("historyList");
+
+if(history.length === 0){
+
+    container.innerHTML = `
+    <div class="card">
+        <h3>No Chat History Yet</h3>
+        <p>Start asking questions to EduGenie AI.</p>
+    </div>
+    `;
+
+}else{
+
+    history.forEach(chat=>{
+
+        container.innerHTML += `
+        <div class="history-card">
+            <h3>❓ ${chat.question}</h3>
+            <p>${chat.answer}</p>
+            <small>${chat.time}</small>
+        </div>
+        `;
+
+    });
+
+}
+
+function clearHistory(){
+
+    localStorage.removeItem("history");
+    location.reload();
+
+}
+
+</script>
+
+{% endblock %}
