@@ -64,6 +64,17 @@ EduGenie AI helps students learn smarter by providing instant AI answers, genera
 - PyPDF2
 
 ---
+# Skills Required
+- Python(Programming Language)
+- FastAPI
+- Generative Artificial Intelligence
+- Natural Languaue Processing(NLP)
+- HTML Editor
+- Prompt Engineering
+- HTML Appilication
+- CSS Animations
+- GeminiAI
+- AI/ML Interface
 
 # 📁 Project Structure
 
@@ -194,15 +205,12 @@ This project demonstrates:
 
 ---
 
-# Author
-
-**Tripura Nulu**
-
-B.Tech Student
-
-EduGenie AI – Final Year Mini Project
-
-2026
+# Team Members
+- Pavani Lashmi Gonthina
+- Nulu Tripura Raja Niharika
+- Prasad Lanka
+- Satwika Akula
+- Seeli Nehaswapna
 
 ---
 
