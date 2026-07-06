@@ -147,14 +147,21 @@ http://127.0.0.1:8000
 # 📸 Screens
 
 - Home Page
+![alt text](image.png)
 - Ask AI
+![alt text](image-2.png)
 - Dashboard
+![alt text](image-1.png)
 - Quiz Generator
+![alt text](image-3.png)
 - Text Summarizer
+![alt text](image-4.png)
 - Learning Roadmap
+![alt text](image-5.png)
 - Chat History
+![alt text](image-6.png)
 - Dark Mode
-
+![alt text](image-7.png)
 ---
 
 # Future Enhancements

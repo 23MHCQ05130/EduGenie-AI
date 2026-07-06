@@ -2,45 +2,44 @@
 
 {% block content %}
 
-<div class="dashboard">
-
+<div class="page-header">
     <h1>📊 Dashboard</h1>
-
     <p>Welcome back! Here's your EduGenie activity.</p>
+</div>
 
+<div class="dashboard-container">
+
+    <!-- Statistics Cards -->
     <div class="stats-grid">
 
         <div class="stat-card">
-            <h2 id="questions">0</h2>
-            <p>Questions Asked</p>
+            <h2 id="questionCount">0</h2>
+            <h3>Questions Asked</h3>
         </div>
 
         <div class="stat-card">
-            <h2 id="quizzes">0</h2>
-            <p>Quizzes Generated</p>
+            <h2 id="quizCount">0</h2>
+            <h3>Quizzes Generated</h3>
         </div>
 
         <div class="stat-card">
-            <h2 id="summaries">0</h2>
-            <p>Summaries Created</p>
+            <h2 id="summaryCount">0</h2>
+            <h3>Summaries Created</h3>
         </div>
 
         <div class="stat-card">
-            <h2 id="roadmaps">0</h2>
-            <p>Roadmaps Generated</p>
+            <h2 id="roadmapCount">0</h2>
+            <h3>Roadmaps Generated</h3>
         </div>
 
     </div>
 
+    <!-- Recent Activity -->
     <div class="recent-card">
 
         <h2>📈 Recent Activity</h2>
 
-        <ul id="activity">
-
-            <li>Start using EduGenie AI to track your learning.</li>
-
-        </ul>
+        <div id="recentActivity"></div>
 
     </div>
 
@@ -48,38 +47,37 @@
 
 <script>
 
-let history = JSON.parse(localStorage.getItem("history")) || [];
+const history = JSON.parse(localStorage.getItem("history")) || [];
 
-document.getElementById("questions").innerHTML = history.length;
+document.getElementById("questionCount").innerHTML = history.length;
 
-// Temporary values (we'll make these dynamic later)
-let quizCount = Number(localStorage.getItem("quizCount")) || 0;
+document.getElementById("quizCount").innerHTML =
+localStorage.getItem("quizCount") || 0;
 
-document.getElementById("quizzes").innerHTML = quizCount;
-let summaryCount=Number(localStorage.getItem("summaryCount")) || 0;
+document.getElementById("summaryCount").innerHTML =
+localStorage.getItem("summaryCount") || 0;
 
-document.getElementById("summaries").innerHTML=summaryCount;
-let roadmapCount=Number(localStorage.getItem("roadmapCount")) || 0;
+document.getElementById("roadmapCount").innerHTML =
+localStorage.getItem("roadmapCount") || 0;
 
-document.getElementById("roadmaps").innerHTML=roadmapCount;
+const recent = document.getElementById("recentActivity");
 
-let activity = document.getElementById("activity");
+if(history.length === 0){
 
-activity.innerHTML = "";
-
-if(history.length==0){
-
-    activity.innerHTML = "<li>No activity yet.</li>";
+    recent.innerHTML = `
+        <p>No recent activity yet.</p>
+    `;
 
 }else{
 
     history.slice().reverse().forEach(chat=>{
 
-        activity.innerHTML += `
-        <li>
-            <b>${chat.question}</b><br>
-            <small>${chat.time}</small>
-        </li>
+        recent.innerHTML += `
+            <div class="activity-item">
+                <strong>• ${chat.question}</strong><br>
+                <small>${chat.time}</small>
+                <hr>
+            </div>
         `;
 
     });
