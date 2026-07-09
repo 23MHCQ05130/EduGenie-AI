@@ -175,6 +175,9 @@ http://127.0.0.1:8000
 ![alt text](image-7.png)
 ---
 
+# Demo Video
+https://drive.google.com/file/d/1xPN-c_oquhwxqpsPjAwk3b-8BfDkCDbv/view?usp=drivesdk
+
 # Future Enhancements
 
 - User Login & Authentication
